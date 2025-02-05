@@ -1,217 +1,116 @@
-/* Global styles */
-body {
-    font-family: sans-serif;
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
     background-color: #f8f9fa;
 }
 
 /* Navbar */
-.navbar {
-    background-color: #343a40 !important;
-}
-
-.navbar .navbar-brand {
-    font-size: 1.8rem;
-    font-weight: bold;
-}
-
-.navbar .navbar-nav .nav-link {
-    font-size: 1rem;
+nav {
+    background-color: #333;
+    color: white;
     padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.navbar .navbar-nav .nav-link.active {
-    color: #3d40c7 !important;
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
 }
 
 /* Hero Section */
-section.bg-primary {
-    background-color: #007bff;
-    color: white;
-}
-
-section.bg-primary h1 {
-    font-size: 3rem;
-    font-weight: 600;
-}
-
-section.bg-primary p {
-    font-size: 1.2rem;
-}
-
-section.bg-primary .btn {
-    font-size: 1.1rem;
-    padding: 12px 30px;
-}
-
-section.bg-primary .btn-light {
+.hero {
     background-color: white;
-    color: #007bff;
-}
-
-section.bg-primary .btn-outline-light {
-    border: 1px solid white;
-    color: white;
-}
-
-/* Features Section */
-#features {
-    background-color: #f8f9fa;
-    padding: 5rem 0;
-}
-
-#features h2 {
-    font-size: 2.5rem;
-    font-weight: 600;
-    margin-bottom: 40px;
-}
-
-.card {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-}
-
-.card-body {
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
     text-align: center;
+    background-size: cover;
+    padding: 100px 0;
 }
 
-.card .fa {
-    color: #007bff;
-}
-
-.card .card-title {
-    font-size: 1.25rem;
-    font-weight: bold;
-    margin-bottom: 15px;
-}
-
-.card .card-text {
-    font-size: 1rem;
-    color: #6c757d;
-}
-
-/* Pricing Section */
-#pricing {
-    background-color: #ffffff;
-    padding: 5rem 0;
-}
-
-#pricing h2 {
+/* .hero h2 {
     font-size: 2.5rem;
-    font-weight: 600;
-    margin-bottom: 40px;
+} */
+
+.hero .btn {
+    margin-top: 20px;
 }
 
-.card-body .card-title {
-    font-size: 1.75rem;
-    font-weight: bold;
+/* Features */
+.feature-box {
+    padding: 20px;
+    background-color: white;
 }
 
-.card-body .card-subtitle {
-    font-size: 1.1rem;
-    color: #6c757d;
-    margin-bottom: 20px;
-}
-
-.card-body .list-unstyled {
-    text-align: left;
-    font-size: 1rem;
-    color: #6c757d;
-}
-
-.card-body .btn {
-    background-color: #007bff;
-    color: white;
-    font-size: 1rem;
-    padding: 12px 20px;
-}
-
-.card-body .btn:hover {
-    background-color: #0056b3;
-}
-
-.card-body .card-title.fw-bold {
-    font-weight: 600;
-}
-
-/* Contact Section */
-#contact {
-    background-color: #f8f9fa;
-    padding: 5rem 0;
-}
-
-#contact h2 {
-    font-size: 2.5rem;
-    font-weight: 600;
-    margin-bottom: 20px;
-}
-
-#contact p {
-    font-size: 1.1rem;
-    margin-bottom: 30px;
-}
-
-#contact .btn {
-    font-size: 1.25rem;
-    padding: 12px 30px;
-    background-color: #007bff;
-    color: white;
-}
-
-#contact .btn:hover {
-    background-color: #0056b3;
-}
-
-/* Footer */
-footer {
-    background-color: #343a40;
-    color: white;
-    padding: 2rem 0;
-}
-
-footer p {
+.feature-box i {
+    display: block;
     margin-bottom: 10px;
 }
 
-footer .fab {
-    font-size: 1.5rem;
+/* Detection Section */
+.detection-section {
+    background-color: #f8f9fa;
+    padding: 60px 20px;
 }
 
-footer a {
-    color: white;
+.detection-images img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-footer a:hover {
-    color: #007bff;
-    text-decoration: none;
+/* Footer */
+.footer {
+    background: #222;
+    color: #ddd;
+    padding: 20px 0;
 }
 
-/* Responsive Styles */
+.footer p {
+    margin: 5px 0;
+}
+
+/* Media Queries */
 @media (max-width: 768px) {
-    .navbar .navbar-nav .nav-link {
-        font-size: 0.9rem;
-        padding: 8px 15px;
+    .nav-links {
+        display: none;
+        flex-direction: column;
     }
 
-    section.bg-primary h1 {
-        font-size: 2.5rem;
+    .nav-links.active {
+        display: flex;
     }
 
-    section.bg-primary .btn {
-        font-size: 1rem;
-        padding: 10px 25px;
-    }
-
-    #features .card {
-        margin-bottom: 30px;
-    }
-
-    #pricing .card-body {
-        padding: 20px;
-    }
-
-    #pricing h2 {
-        font-size: 2rem;
+    .menu-toggle {
+        display: block;
     }
 }

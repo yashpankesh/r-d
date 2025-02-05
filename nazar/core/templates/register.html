@@ -6,20 +6,22 @@
     <title>Registration</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #f4f7fc;
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             padding: 20px;
         }
+
         .form-container {
             background-color: #fff;
             padding: 40px;
@@ -29,20 +31,24 @@
             max-width: 400px;
             animation: fadeIn 1s ease-out;
         }
+
         h2 {
             text-align: center;
             color: #333;
             margin-bottom: 20px;
         }
+
         .form-group {
             margin-bottom: 20px;
         }
+
         label {
             font-size: 14px;
             color: #555;
             display: block;
             margin-bottom: 8px;
         }
+
         input {
             width: 100%;
             padding: 12px;
@@ -52,15 +58,18 @@
             color: #333;
             transition: border-color 0.3s;
         }
+
         input:focus {
             border-color: rgb(102, 127, 203);
             outline: none;
         }
+
         .error-message {
             color: red;
             font-size: 12px;
             margin-top: 5px;
         }
+
         button {
             width: 100%;
             padding: 12px;
@@ -72,16 +81,31 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
+
         button:hover {
-            background-color: rgb(102, 127, 203);
+            background-color: rgb(82, 107, 183);
         }
+
         .form-footer {
             text-align: center;
             margin-top: 20px;
         }
+
         .form-footer a {
             color: rgb(102, 127, 203);
             text-decoration: none;
+        }
+
+        .navbar-brand {
+            font-family: 'Papyrus', fantasy;
+            color: rgb(102, 127, 203);
+            font-size: 2.5rem;
+            text-align: center;
+            display: block;
+            margin: 0 auto;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
         }
 
         @keyframes fadeIn {
@@ -95,71 +119,51 @@
             }
         }
 
-        .navbar-brand {
-            font-family: 'Papyrus', fantasy;
-            color: rgb(102, 127, 203);
-            font-size: 3rem;
-            text-align: center;
-            display: block;
-            margin: 0 auto;
-            font-weight: bold;
-            letter-spacing: 2px;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        @media (max-width: 480px) {
+            .form-container {
+                padding: 20px;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+            button {
+                font-size: 14px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="form-container">
-            <p class="navbar-brand">Nazar</p>
-            <h2>Create an Account</h2>
-            <form method="POST">
-                {% csrf_token %}
-                <div class="form-group">
-                    <label for="username">User Name</label>
-                    {{ form.username }}
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    {{ form.email }}
-                </div>
-                <div class="form-group">
-                    <label for="phone_number">Phone Number</label>
-                    {{ form.phone_number }}
-                </div>
-                <div class="form-group">
-                    <label for="password1">Password</label>
-                    {{ form.password1 }}
-                </div>
-                <div class="form-group">
-                    <label for="password2">Confirm Password</label>
-                    {{ form.password2 }}
-                    <div class="error-message">{% if form.non_field_errors %}{{ form.non_field_errors }}{% endif %}</div>
-                </div>
-                <button type="submit">Register</button>
-            </form>
-            <div class="form-footer">
-                <p>Already have an account? <a href="/login/">Login here</a></p>
+    <div class="form-container">
+        <p class="navbar-brand">Nazar</p>
+        <h2>Create an Account</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">User Name</label>
+                {{ form.username }}
             </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                {{ form.email }}
+            </div>
+            <div class="form-group">
+                <label for="phone_number">Phone Number</label>
+                {{ form.phone_number }}
+            </div>
+            <div class="form-group">
+                <label for="password1">Password</label>
+                {{ form.password1 }}
+            </div>
+            <div class="form-group">
+                <label for="password2">Confirm Password</label>
+                {{ form.password2 }}
+                <div class="error-message">{% if form.non_field_errors %}{{ form.non_field_errors }}{% endif %}</div>
+            </div>
+            <button type="submit">Register</button>
+        </form>
+        <div class="form-footer">
+            <p>Already have an account? <a href="/login/">Login here</a></p>
         </div>
     </div>
-    <script>
-        // Add JavaScript for input effects
-        const inputs = document.querySelectorAll('input');
-        inputs.forEach(input => {
-            input.addEventListener('focus', function() {
-                this.parentElement.classList.add('focused');
-            });
-            input.addEventListener('blur', function() {
-                if (this.value === '') {
-                    this.parentElement.classList.remove('focused');
-                }
-            });
-        });
-    </script>
 </body>
 </html>
-
-
-
-
