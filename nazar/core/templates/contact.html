@@ -1,0 +1,310 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Nazar </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href={% static "css/style.css" %}>
+    <style>
+        .card-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .card {
+            width: 22%;
+            background: #fff;
+            text-align: center;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        
+        .card-1{
+            background: linear-gradient(to right, #545d60 , #283048 );
+        }
+        .card-2{
+            background: linear-gradient(to right, #4b485a , #1f1c2c);
+        }
+        .card-3{
+            background: linear-gradient(to right, #3f4c6b , #535e79);
+        }
+        .card-4{
+            background: linear-gradient(to right, #3f4c6b , #535e79);
+        }
+        
+        .card:hover{
+            background: linear-gradient(to left, #3a7bd5, #00d2ff);
+        }
+        
+        .card:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Responsive adjustments */
+        @media screen and (max-width: 1024px) {
+            .card {
+                width: 45%;
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .card {
+                width: 100%;
+            }
+        }
+
+        /* Contact Section */
+    .contact-section {
+    color: #ffffff;
+    padding: 60px 10%;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    min-height: 80vh; /* Ensures the section has enough height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 80px; /* Adds space before footer */
+    }
+
+    .contact-section h2 {
+    font-size: 2.5rem;
+    color:rgb(255, 255, 255); /* Accent color matching site */
+    margin-bottom: 15px;
+    }
+
+    .contact-section p {
+    font-size: 1rem;
+    color: #cccccc;
+    margin-bottom: 30px;
+    max-width: 600px;
+    }
+
+    /* Form Styles */
+    .contact-section form {
+    width: 100%;
+    max-width: 600px;
+    background: #161b22; /* Dark background for form */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0px 5px 15px rgba(0, 188, 212, 0.2);
+    border: 1px solid rgb(255, 255, 255); /* Border to match theme */
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Adds spacing between form elements */
+    }
+
+    .form-group {
+    width: 100%;
+    text-align: left;
+    }
+
+    .form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color:rgb(255, 255, 255);
+    }
+
+    .form-group input,
+    .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    background: #0d1117;
+    border: 2px solid rgb(215, 215, 215);
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #ffffff;
+    transition: border-color 0.3s ease-in-out;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+    border-color:rgba(215, 211, 201, 0.66); /* Highlight effect */
+    outline: none;
+    box-shadow: 0px 0px 10px rgba(215, 215, 215, 0.6);
+    }
+
+    /* Textarea Resize Handling */
+    .form-group textarea {
+    height: 150px;
+    resize: vertical;
+    }
+
+    /* Button Styles */
+    button.con [type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(45deg, #00bcd4, #008394);
+    border: none;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+    }
+
+    button.con [type="submit"]:hover {
+    background: linear-gradient(45deg, #ffcc00, #ff9900);
+    transform: scale(1.05);
+    }
+
+    /* Fix footer overlapping issue */
+    footer {
+    position: relative;
+    width: 100%;
+    padding: 20px 0;
+    text-align: center;
+    }
+
+    /* Responsive Styles */
+    @media screen and (max-width: 768px) {
+    .contact-section {
+        padding: 40px 5%;
+    }
+
+    .contact-section h2 {
+        font-size: rem;
+    }
+
+    .contact-section p {
+        font-size: 0.5rem;
+    }
+
+    .contact-section form {
+        padding: 25px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        font-size: 0.9rem;
+    }
+    }
+
+        
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="nav-bar">
+            <div class="logo">
+               <a href="/"> <img class="star" src=" {% static 'css/img/nazar (1).png' %}" alt="" > </a>
+                {% comment %} <div>Nazar</div> {% endcomment %}
+            </div>
+            <ul class="menu-items">
+                <li><a href="/">Home</a></li>
+                <li><a href="/aboutus">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li>
+                    <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="logout-link">Logout</button>
+                    </form>
+                </li>                
+            </ul>
+        </nav>
+    </header>  
+
+    <!-- Team Members Section -->
+    <section>
+        <div class="container">
+            <div class="left-side">
+                <div class="title">
+                    <h1>Meet Our Team </h1>
+                    <h2>Track. Detect. Simplify.</h2>
+                </div>
+            </div>
+            <div class="right-side">
+                <p>
+                    At Nazar, we are dedicated to redefining possibilities through innovative motion tracking and intelligent object detection solutions.
+                </p>
+                
+                
+
+                <div class="line"></div>
+            </div>
+        </div>
+        <div class="card-container">
+            <div class="card card-1">
+                <div class="rotation">
+                    <img src= {% static 'css/img/team1.png' %} alt="" class="img-card image">
+                </div>
+                <div class="color">Yash Patel</div>
+                <span>Founder & CEO</span>
+            </div>
+            {% comment %} <div class="card card-2">
+                <div class="rotation">
+                    <img src= {% static 'css/img/card-2.0.png' %} alt="" class="img-card image">
+                </div>
+                <div class="color">Shalin Patel</div>
+                <span>Support Developer</span>
+            </div>
+            <div class="card card-3">
+                <div class="rotation">
+                    <img src={% static 'css/img/card-3.png' %} alt="" class="img-card image">
+                </div>
+                <div class="color">Mit Patel</div>
+                <span>Support Developer</span>
+            </div>
+            <div class="card card-4">
+                <div class="rotation">
+                    <img src={% static 'css/img/card-3.png' %} alt="" class="img-card image">
+                </div>
+                <div class="color">Harsh Patil</div>
+                <span>Support Developer</span>
+            </div> {% endcomment %}
+        </div>
+        
+    </section>
+
+<!-- Contact Section -->
+<section class="contact-section">
+    <h2>Contact Us</h2>
+    <p>If you have any questions, feel free to reach out to us.</p>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.name.label_tag }} {{ form.name }}
+        </div>
+        <div class="form-group">
+            {{ form.email.label_tag }} {{ form.email }}
+        </div>
+        <div class="form-group">
+            {{ form.message.label_tag }} {{ form.message }}
+        </div>
+        <button type="submit">Send Message</button>
+    </form>
+</section>
+
+    <footer>
+        <div class="container">
+            <div class="left-side">
+                <p> &copy; copyright 2025 . All rights reserved</p>
+            </div>
+            <div class="right-side center">
+                <p>Terms and Conditions</p>
+            </div>
+        </div>
+    </footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js" ></script>
+<script src= {% static 'js/script.js' %}></script>
+</html>

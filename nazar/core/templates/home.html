@@ -1,252 +1,189 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nazar AI - Smart Surveillance</title>
-    <meta name="description" content="Nazar AI - Advanced security with AI-powered motion detection and real-time alerts.">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8f9fa;
-        }
-        
-        /* Navbar */
-        nav {
-            background-color: #333;
-            color: white;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        
-        .nav-links {
-            list-style: none;
-            display: flex;
-        }
-        
-        .nav-links li {
-            margin: 0 15px;
-        }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-        }
-        
-        .nav-links a:hover {
-            text-decoration: underline;
-        }
-        
-        .menu-toggle {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: white;
-        }
-        
-        /* Hero Section */
-        .hero {
-            background-color: white;
-            height: 70vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: black;
-            text-align: center;
-            background-size: cover;
-            padding: 100px 0;
-        }
-        
-        .hero h1 {
-            font-size: 2.5rem;
-        }
-        
-        .hero .btn {
-            margin-top: 20px;
-        }
-        
-        /* Features */
-        .feature-box {
-            padding: 20px;
-            background-color: white;
-        }
-        
-        .feature-box i {
-            display: block;
-            margin-bottom: 10px;
-        }
-        
-        /* Detection Section */
-        .detection-section {
-            background-color: #f8f9fa;
-            padding: 60px 20px;
-        }
-        
-        .detection-images img {
-            max-width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* Footer */
-    .footer {
-        background: #222;
-        color: #ddd;
-        padding: 20px 0;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .footer p {
-        margin: 5px 0;
-    }
-        
-        /* Media Queries */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                flex-direction: column;
-            }
-        
-            .nav-links.active {
-                display: flex;
-            }
-        
-            .menu-toggle {
-                display: block;
-            }
-        }
-        
-        /* Enhancements */
-        h1 {
-            font-size: 3rem;
-            text-align: center;
-            margin: 20px 0;
-        }
-        
-        /* Smooth Scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-        
-    </style>
-
-    <script>
-        function toggleMenu() {
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.classList.toggle('active');
-        }
-    </script>
+    <title>Nazar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href={% static "css/style.css" %}>
 </head>
 <body>
-
-    <!-- Navbar -->
-    <nav>
-        <div class="logo">Nazar AI</div>
-        <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#detection">Detected Images</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="/login">Login</a></li>
-        </ul>
-        <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-overlay"></div>
-        <div class="container text-black">
-            <h1 class="display-4 fw-bold">Nazar AI - Secure Your World</h1>
-            <p class="lead">Real-time object detection, face recognition, and instant alerts powered by AI.</p>
-            <a href="/start-detection" class="btn btn-primary btn-lg shadow-sm">Start Monitoring</a>
-            <a href="#features" class="btn btn-outline-dark btn-lg ms-3">Learn More</a>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section id="features" class="container py-5">
-        <h2 class="fw-bold text-center mb-4">Our Cutting-Edge Features</h2>
-        <div class="row text-center">
-            <div class="col-md-4 mb-4">
-                <div class="feature-box">
-                    <i class="fas fa-video fa-3x mb-3"></i>
-                    <h5>Live HD Monitoring</h5>
-                    <p>Stream high-quality video in real-time with AI enhancements.</p>
-                </div>
+    <header>
+        <nav class="nav-bar">
+            <div class="logo">
+               <a href="/"> <img class="star" src=" {% static 'css/img/nazar (1).png' %}" alt="" > </a>
+                {% comment %} <div>Nazar</div> {% endcomment %}
             </div>
-            <div class="col-md-4 mb-4">
-                <div class="feature-box">
-                    <i class="fas fa-brain fa-3x mb-3"></i>
-                    <h5>AI Object Detection</h5>
-                    <p>Identify people, animals, and objects with cutting-edge recognition.</p>
+            <ul class="menu-items">
+                <li><a href="/aboutus">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/start-detection">Live</a></li>
+                <li><a href="#">Technology</a></li>
+                
+                <li>
+                    <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="logout-link">Logout</button>
+                    </form>
+                </li>                
+            </ul>
+        </nav>
+    </header>  
+    
+    <section class="section-one">
+        <div class="container">
+            <div class="left-side">
+                <div class="title">
+                    <h1>Advanced Object & 
+                         
+                          <br> Motion Detection <br> For Enhanced Security</h1>
                 </div>
+
+                <p class="p">
+                    Experience real-time object tracking and motion analysis with cutting-edge AI technology. 
+                    Our system ensures accurate identification and instant alerts for security monitoring.
+                </p>
+
+                <button><a href="/start-detection" class="btn btn-primary btn-lg shadow-sm">Start Monitoring</a></button>
+
             </div>
-            <div class="col-md-4 mb-4">
-                <div class="feature-box">
-                    <i class="fas fa-bell fa-3x mb-3"></i>
-                    <h5>Instant Alerts</h5>
-                    <p>Receive real-time notifications when suspicious activity is detected.</p>
-                </div>
+            <div class="right-side pyramid">
+                <img src= {% static 'css/img/p2.png' %} alt="" class="gold glow image">
             </div>
         </div>
     </section>
 
-    <!-- Detected Images Section -->
-    <section id="detection" class="detection-section">
-        <div class="container text-center">
-            <h2 class="fw-bold mb-4">Detected Images</h2>
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <img src="https://source.unsplash.com/400x300/?security,camera" alt="Detected Image 1">
-                    <p>Detected Person - Timestamp</p>
+    <section>
+        <div class="container">
+            <div class="left-side hand">
+                <img class="gold image" src= {% static 'css/img/preve.png' %} alt="">
+            </div>
+            <div class="right-side">
+                
+                <div class="title">
+                    <h1>Precision & <br> Real-Time Detection</h1>
+                    <h2>Why AI-Powered Monitoring Matters</h2>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <img src="https://source.unsplash.com/400x300/?object,ai" alt="Detected Image 2">
-                    <p>Detected Object - Timestamp</p>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <img src="https://source.unsplash.com/400x300/?face,ai" alt="Detected Image 3">
-                    <p>Detected Face - Timestamp</p>
-                </div>
+
+                <p class="p">
+                    AI-driven motion detection ensures accurate identification of moving objects, reducing false alarms and enhancing security measures.
+                </p>
+
+                <div class="line"></div>
+
+                <p class="p">
+                    Our intelligent algorithms analyze motion patterns to provide insightful reports and real-time alerts.
+                </p>
+                <button>Discover More</button>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer id="contact" class="footer">
-        <p>&copy; 2025 Nazar AI. All rights reserved.</p>
-        <p>Follow us on:
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-        </p>
+    <section>
+        <div class="container">
+            <div class="left-side">
+                <div class="title">
+                    <h1>AI-Powered Motion Tracking</h1>
+                    <h2>Seamless Integration & Performance</h2>
+                </div>
+                <div class="type g-type">
+                    <p>Automated Detection</p>
+                    <p>Identify and track moving objects with high accuracy and minimal latency.</p>
+                </div>
+
+                <div class="line line-blue"></div>
+
+                <div class="type s-type">
+                    <p>Instant Alerts</p>
+                    <p>
+                        Receive real-time notifications for any detected movement, ensuring proactive security.
+                    </p>
+                </div>
+                <div class="line"></div>
+            </div>
+            <div class="right-side rotation">
+                <img class="gold3 image" src= {% static 'css/img/ai.png' %} alt="">
+            </div>
+        </div>
+    </section>
+
+    <section class="detected-images">
+        <div class="container">
+            <div class="left-side">
+                <h1>Detected Images</h1>
+                <h2>Track and Review Identified Objects</h2>
+                <p>
+                    View the latest detected images captured by Nazar's AI-powered monitoring system.
+                    Stay informed with real-time object recognition and motion tracking for enhanced security.
+                </p>
+                <button><a href="/detected-images" class="btn btn-primary btn-lg">View Detected Images</a></button>
+            </div>
+            <div class="right-side">
+                <img src="{% static 'css/img/face1.0.png' %}" alt="Detected Images Preview" class="gold image">
+            </div>
+        </div>
+    </section>
+
+    <section class="footer-section">
+        <div class="container" style="padding-bottom:5rem;">
+            <img src="./img/star.png" alt="" class="star star-s5">
+            <div class="left-side">
+                <div class="title">
+                    <h1>Stay Updated</h1>
+                    <h2>With Our Latest AI Innovations</h2>
+                </div>
+            </div>
+            <div class="right-side">
+                <p class="txt">
+                    Enhance <span>your security</span> with AI-driven motion detection technology that 
+                    <span>provides real-time alerts</span> and intelligent tracking.
+                </p>
+            </div>
+        </div>
+
+        <div class="line"></div>
+
+        <div class="container sides">
+            <div class="left-side">
+                <div class="logo">
+                    <img src= {% static 'css/img/nazar (1).png' %} class="star" alt="">
+                    
+                </div>
+
+                <p class="p">
+                    We are dedicated to revolutionizing motion detection and security monitoring with advanced AI technologies.
+                </p>
+            </div>
+            <div class="right-side">
+                <ul class="menu">
+                    <li><a href="#">Technology</a></li>
+                    <li><a href="#">Company</a></li>
+                    <li><a href="#">Support</a></li>
+                    <li><a href="#">Solutions</a></li>
+                    <li><a href="#">Research</a></li>
+                    <li><a href="#">Case Studies</a></li>
+                    <li><a href="#">AI Insights</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    
+    <footer>
+        <div class="container">
+            <div class="left-side">
+                <p> &copy; copyright 2025 . All rights reserved</p>
+            </div>
+            <div class="right-side center">
+                <p>Terms and Conditions</p>
+            </div>
+        </div>
     </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js" ></script>
+<script src= {% static 'js/script.js' %}></script>
 </html>

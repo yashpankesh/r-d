@@ -12,7 +12,7 @@ from django.http import StreamingHttpResponse
 from django.shortcuts import render, redirect,HttpResponse,get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .forms import UserRegisterForm
+from .forms import UserRegisterForm,ContactForm
 from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
 from django.contrib.auth.models import User
@@ -26,7 +26,7 @@ def register(request):
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            send_welcome_email(User)
+            send_welcome_email(user)
             username = form.cleaned_data.get('username')
             messages.success(request, f'Account created for {username}! You can now log in.')
             return redirect('login')
@@ -78,7 +78,10 @@ IP_WEBCAM_URL = "http://192.0.0.4:8080/video"
 known_face_encodings = []
 known_face_names = {
     "Yash": r"C:\Users\ptlya\OneDrive\Desktop\Python\detection\Detection\images\yp.jpg",
-    "Khushbu": r"C:\Users\ptlya\OneDrive\Desktop\Python\detection\Detection\images\_MG_7750.JPG"
+    "Khushbu": r"C:\Users\ptlya\OneDrive\Desktop\Python\detection\Detection\images\_MG_7750.JPG",
+    "shalin" : r"C:\Users\ptlya\OneDrive\Desktop\Python\detection\Detection\images\shalin.jpg",
+    "mit" : r"C:\Users\ptlya\OneDrive\Desktop\Python\detection\Detection\images\mit.jpg",
+    "harsh" : r"C:\Users\ptlya\OneDrive\Desktop\Python\detection\Detection\images\harsh.jpg",
 }
 
 # Load Faces
@@ -229,31 +232,47 @@ def live_page(request):
     """Render the page with the live video feed."""
     return render(request, "live_feed.html")
 
+def aboutus(request):
+    return render(request, "aboutus.html")
+
+def contact(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, 'home.html')
+    else:
+        form = ContactForm()
+    return render(request, 'contact.html', {'form': form})
+
+
 # send welcome message
+
+
 def send_welcome_email(user):
     """
     Sends a welcome email to the newly registered user.
     Args:
-        user: The user object with email field.
+        user: The user object with an email field.
     """
-    subject = 'Welcome to Nazar AI'
-    from_email = 'nazarai.info@gmail.com'  # Your sender email
-    recipient_list = [user.email]  # User's email
+    if not user.email:
+        return  # Ensure the email field is not empty
 
-    # Render HTML message using the template and user context
+    subject = 'Welcome to Nazar AI'
+    from_email = 'nazarai.info@gmail.com'  # Use your configured sender
+    recipient_list = [user.email]
+
+    # Render the email content using the welcome template
     html_message = render_to_string('welcome.html', {'user': user})
 
-    # Create the email message
-    email = EmailMessage(
-        subject,
-        html_message,
-        from_email,
-        recipient_list
-    )
+    # Create the email message with content type set to HTML
+    email = EmailMessage(subject, html_message, from_email, recipient_list)
+    email.content_subtype = 'html'  # Specify HTML format
 
-    # Set the email content type as HTML
-    email.content_subtype = 'html'
+    try:
+        email.send()
+        print(f"Welcome email successfully sent to {user.email}")
+    except Exception as e:
+        print(f"Error sending welcome email: {e}")
 
-    # Send the email
-    email.send()
 

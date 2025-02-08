@@ -1,33 +1,76 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detected Objects</title>
+    <title>Detected-objects | Nazar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
+        .gallery { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 15px; 
+            justify-content: center; 
+            padding: 20px; 
+        } 
+        .gallery img { 
+            width: 100%; 
+            height: 200px; 
+            object-fit: cover; 
+            border-radius: 8px; 
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.2); 
+            transition: transform 0.3s ease-in-out; 
+        } 
+        .gallery img:hover { 
+            transform: scale(1.05); 
         }
-        .gallery {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .gallery img {
-            width: 300px;
-            height: auto;
-            margin: 10px;
-            border: 2px solid #000;
-        }
+       
+        
+
+
     </style>
 </head>
 <body>
-    <h1>Detected Objects</h1>
-    <div class="gallery">
-        {% for image in images %}
-            <img src="{{ image }}" alt="Detected Object">
-        {% endfor %}
-    </div>
+    <header>
+        <nav class="nav-bar">
+            <div class="logo">
+               <a href="/"> <img class="star" src="{% static 'css/img/nazar (1).png' %}" alt="Nazar Logo"> </a>
+            </div>
+            <ul class="menu-items">
+                <li><a href="/">Home</a></li>
+                <li><a href="/aboutus">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li>
+                    <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="logout-link">Logout</button>
+                    </form>
+                </li>                
+            </ul>
+        </nav>
+    </header>  
+
+    <!-- Detected Object Images Section -->
+    <section class="detected-images">
+        <div class="container-dec">
+            <h1>Detected Objects</h1>
+            <div class="gallery">
+                {% for image in images %}
+                    <div class="gallery-item">
+                        <img src="{{ image }}" alt="Detected Object">
+                    </div>
+                {% empty %}
+                    <p>No detected objects available.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js"></script>
+<script src="{% static 'js/script.js' %}"></script>
 </html>
