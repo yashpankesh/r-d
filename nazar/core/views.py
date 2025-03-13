@@ -26,7 +26,7 @@ def register(request):
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            send_welcome_email(user)
+            send_welcome_email(User)
             username = form.cleaned_data.get('username')
             messages.success(request, f'Account created for {username}! You can now log in.')
             return redirect('login')
@@ -72,7 +72,7 @@ print(f"Calculated Focal Length: {FOCAL_LENGTH}")
 model = YOLO(r"C:\Users\ptlya\OneDrive\Desktop\Python\detection\models\yolov8s.pt")
 
 # IP Webcam URL (Replace with your actual IP webcam URL)
-IP_WEBCAM_URL = "http://192.0.0.4:8080/video"
+IP_WEBCAM_URL = "http://10.166.152.249:8080/video"
 
 # Known Faces
 known_face_encodings = []
@@ -235,6 +235,9 @@ def live_page(request):
 def aboutus(request):
     return render(request, "aboutus.html")
 
+def technology(request):
+    return render(request,"technology.html")
+
 def contact(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
@@ -274,5 +277,3 @@ def send_welcome_email(user):
         print(f"Welcome email successfully sent to {user.email}")
     except Exception as e:
         print(f"Error sending welcome email: {e}")
-
-

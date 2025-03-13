@@ -15,6 +15,7 @@ urlpatterns = [
     path("video-feed/", views.live_feed, name="live_feed"),
     path("aboutus/", views.aboutus, name="about"),
     path("contact/", views.contact, name="contact"),
+    path("technology/", views.technology, name="technology"),
 ]
 
 if settings.DEBUG:

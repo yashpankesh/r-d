@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Nazar </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href={% static "css/style.css" %}>
+</head>
+<body>
+    <header>
+        <nav class="nav-bar">
+            <div class="logo">
+               <a href="/"> <img class="star" src=" {% static 'css/img/nazar (1).png' %}" alt="" > </a>
+                {% comment %} <div>Nazar</div> {% endcomment %}
+            </div>
+            <ul class="menu-items">
+                <li><a href="/">Home</a></li>
+                <li><a href="/aboutus">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li>
+                    <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="logout-link">Logout</button>
+                    </form>
+                </li>                
+            </ul>
+        </nav>
+    </header>  
+
+    <div class="line"></div>
+
+        <div class="container sides">
+            <div class="left-side">
+                <div class="logo">
+                    <img class="star" src=" {% static 'css/img/nazar (1).png' %}" alt="">
+                    
+                </div>
+
+                <p class="p">
+                    We are dedicated to revolutionizing motion detection and security monitoring with advanced AI technologies.
+                </p>
+            </div>
+            <div class="right-side">
+                <ul class="menu">
+                    <li><a href="#">Technology</a></li>
+                    <li><a href="#">Company</a></li>
+                    <li><a href="#">Support</a></li>
+                    <li><a href="#">Solutions</a></li>
+                    <li><a href="#">Research</a></li>
+                    <li><a href="#">Case Studies</a></li>
+                    <li><a href="#">AI Insights</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    
+    <footer>
+        <div class="container">
+            <div class="left-side">
+                <p> &copy; copyright 2025 . All rights reserved</p>
+            </div>
+            <div class="right-side center">
+                <p>Terms and Conditions</p>
+            </div>
+        </div>
+    </footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js" ></script>
+<script src= {% static 'js/script.js' %}></script>
+</html>
